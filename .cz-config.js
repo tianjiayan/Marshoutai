@@ -24,5 +24,11 @@ module.exports = {
     body: '请输⼊详细描述(可选):',
     footer: '请输⼊要关闭的issue(可选):',
     confirmCommit: '确认使⽤以上信息提交？(y/n/e/h)'
-  }
+  },
+  
+    // 跳过问题
+    skipQuestions: ['body', 'footer'],
+
+    // subject⽂字⻓度默认是72
+  subjectLimit: 72
 }
