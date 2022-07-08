@@ -15,7 +15,11 @@
         <el-input placeholder="请输入用户名" v-model="loginForm.userName" />
       </el-form-item>
       <el-form-item prop="userPwd">
-        <el-input placeholder="请输入密码" v-model="loginForm.userPwd" />
+        <el-input
+          placeholder="请输入密码"
+          v-model="loginForm.userPwd"
+          type="password"
+        />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="handlogin(ruleFormRef)"
@@ -35,8 +39,8 @@ const router = useRouter()
 const store = useStore()
 const ruleFormRef = ref()
 const loginForm = reactive({
-  userName: '',
-  userPwd: ''
+  userName: 'admin',
+  userPwd: '123456'
 })
 //校验
 const rules = reactive({
@@ -61,14 +65,15 @@ const handlogin = async () => {
   await ruleFormRef.value.validate(async (valid) => {
     if (valid) {
       const response = await store.dispatch('user/login', loginForm)
-      if (response.token) router.push('/')
+      console.log(response)
+      if (response.data.token) router.push('/')
     }
   })
 }
 </script>
 <style lang="scss" scoped>
 .box {
-  width: 500px;
+  width: 650px;
   height: 400px;
   box-shadow: 5px 5px 10px 5px #ddd;
   position: absolute;
@@ -79,15 +84,28 @@ const handlogin = async () => {
   margin: auto;
   box-sizing: border-box;
   padding-right: 50px;
+  padding-top: 40px;
   p {
     text-align: center;
+    margin-left: 50px;
     font-size: 50px;
+    margin-bottom: 40px;
   }
 }
 .demo-ruleForm {
   width: 100%;
   .el-input {
     width: 100%;
+  }
+}
+.el-form {
+  text-align: center;
+  position: absolute;
+  .el-form-item {
+    margin-right: 80px;
+    .el-button {
+      width: 100%;
+    }
   }
 }
 </style>

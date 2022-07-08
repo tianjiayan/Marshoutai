@@ -1,5 +1,6 @@
 import axios from 'axios'
 import loading from './loading'
+import store from '@/store'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000
@@ -10,6 +11,9 @@ const service = axios.create({
 service.interceptors.request.use(
   function (config) {
     // 在发送请求之前做些什么
+
+    const token = store.getters.token
+    if (token) config.headers.Authorization = 'Bearer ' + token
 
     loading.open()
     return config
