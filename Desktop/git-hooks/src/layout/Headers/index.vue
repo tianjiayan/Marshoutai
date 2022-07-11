@@ -3,7 +3,7 @@
     <el-icon><Expand /></el-icon>
     <el-breadcrumb :separator-icon="ArrowRight">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>欢迎体验Vue3全栈课程</el-breadcrumb-item>
+      <el-breadcrumb-item>{{$route.meta.title}}</el-breadcrumb-item>
     </el-breadcrumb>
   </div>
 
@@ -67,8 +67,11 @@ const handleLogout = () => {
   align-items: center;
 }
 .con {
-  width: 230px;
+  // width: 230px;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  .el-icon{
+    margin-right: 20px;
+  }
 }
 </style>

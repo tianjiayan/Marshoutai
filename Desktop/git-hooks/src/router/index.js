@@ -1,18 +1,27 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import layout from '../layout'
+import user from './modules/user'
+import menu from './modules/menus'
+import role from './modules/role'
+import dept from './modules/dept'
+import leave from './modules/leave'
+import approve from './modules/approve'
 
-const routes = [
+//公有路由
+export const publicRoutes = [
   {
-    name: 'home',
     path: '/',
-    component: () => import('../layout'),
+    name: 'layout',
+    component: layout,
     redirect: '/welcome',
     children: [
       {
-        name: 'welcome',
         path: '/welcome',
-        meta: { title: '欢迎体验vue3全栈课程' },
-        component: () => import('../views/Welcome.vue')
+        name: 'welcome',
+        meta: {
+          title: '欢迎体验Vue3全栈课程'
+        },
+        component: () => import('@/views/other/welcome')
       }
     ]
   },
@@ -29,10 +38,11 @@ const routes = [
     component: () => import('../views/404')
   }
 ]
-
+//私有路由
+export const prviteRoutes = [user, menu, role, dept, leave, approve]
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes: [...publicRoutes,...prviteRoutes]
 })
 
 export default router

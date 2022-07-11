@@ -8,25 +8,12 @@
       />
       <span>Manager</span>
     </div>
-    <el-menu
-      active-text-color="#ffd04b"
-      background-color="#001529"
-      class="el-menu-vertical-demo"
-      default-active="2"
-      text-color="#fff"
-    >
-      <el-sub-menu index="1">
-        <template #title>
-          <el-icon><location /></el-icon>
-          <span>系统管理</span>
-        </template>
-        <el-menu-item index="1-1">item one</el-menu-item>
-      </el-sub-menu>
-    </el-menu>
+    <MenuTree></MenuTree>
   </el-aside>
 </template>
 
 <script setup>
+import MenuTree from './MenuTree.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -49,12 +36,5 @@
   width: 32px;
   height: 32px;
 }
-.el-menu {
-  height: 100%;
-  background-color: #001529;
-  // overflow-x: hidden;
-  // overflow-y: scroll;
-  overflow: auto;
-  border-right: 0;
-}
+
 </style>

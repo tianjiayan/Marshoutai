@@ -65,8 +65,7 @@ const handlogin = async () => {
   await ruleFormRef.value.validate(async (valid) => {
     if (valid) {
       const response = await store.dispatch('user/login', loginForm)
-      console.log(response)
-      if (response.data.token) router.push('/')
+      if (response.token) router.push('/')
     }
   })
 }

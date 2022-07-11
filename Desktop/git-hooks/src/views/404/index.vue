@@ -1,6 +1,6 @@
 <template>
     <div>
-        角色名称
+        404
     </div>
 </template>
 
